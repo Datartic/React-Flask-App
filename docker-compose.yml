@@ -1,0 +1,50 @@
+version: '3.8'
+
+services:
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+    networks:
+      - tax-filing-network
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "5005:5005"  # Map host port 5001 to container port 5000
+    volumes:
+      - ./backend:/app
+    environment:
+      - FLASK_ENV=development
+      - SQLALCHEMY_DATABASE_URI=postgresql://username:password@db:5432/tax_filing_db
+    networks:
+      - tax-filing-network
+
+  db:
+    image: postgres:13
+    ports:
+      - "5432:5432"  # Expose PostgreSQL port to the host
+    environment:
+      POSTGRES_DB: tax_filing_db
+      POSTGRES_USER: username
+      POSTGRES_PASSWORD: password
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - tax-filing-network
+
+volumes:
+  postgres_data:
+
+networks:
+  tax-filing-network:
+    driver: bridge
