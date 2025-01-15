@@ -1,6 +1,10 @@
 ## React-Flask-App
 Fully functioning App with React on front end and Flask on Backend. Allows to store user data and authenticate.
 
+<img width="742" alt="Screenshot 2025-01-15 at 2 47 33 PM" src="https://github.com/user-attachments/assets/e84188c8-069a-4196-9b22-d26f093e1a52" />
+<img width="737" alt="Screenshot 2025-01-15 at 2 47 40 PM" src="https://github.com/user-attachments/assets/c59cc760-253a-4cf6-ab3a-8ef567a30515" />
+
+
 ### Project Description
 Tax Filing Portal is a web application designed to provide secure, efficient, and professional tax filing services. The portal allows users to sign up, log in, and access their personalized dashboard to manage their tax filing activities. The application ensures that only authenticated users can access sensitive information and perform tax-related tasks.
 
